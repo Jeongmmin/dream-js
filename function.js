@@ -102,12 +102,11 @@ function upgradeUser(user) {
 // can be returned by another function
 
 // 1. Function expression
-// a function declaration can be called earlier than it is defined. (hoisted)
+// a function declaration can be called earlier than it is defined. (hoisted)(호이스팅이 가능)
 // a function expression is created when the execution reaches it.
-const print = function () {
-    // anonymous function
+const print = function () {  // anonymous function(함수에 이름이 없는 것)
     console.log('print');
-};
+    };
 print();
 const printAgain = print;
 printAgain();
@@ -128,13 +127,15 @@ const printYes = function () {
 };
 
 // named function
-// better debugging in debugger's stack traces
-// recursions
+// better debugging in debugger's stack traces (디버깅할 때 함수 이름이 나오게 하기 위해 사용)
+// recursions (함수 안에서 자신 스스로를 호출하는 것) (특수한 상황에 사용, 보통은 오류난다.)
 const printNo = function print() {
     console.log('no!');
 };
 randomQuiz('wrong', printYes, printNo);
 randomQuiz('love you', printYes, printNo);
+
+
 
 // Arrow function
 // always anonymous
@@ -145,11 +146,11 @@ randomQuiz('love you', printYes, printNo);
 const simplePrint = () => console.log('simplePrint!');
 const add = (a, b) => a + b;
 const simpleMultiply = (a, b) => {
-    // do something more
+    // do something more, 블럭있을 때는 return값 필요하다.
     return a * b;
 };
 
-// IIFE: Immediately Invoked Function Expression
+// IIFE: Immediately Invoked Function Expression 함수를 선언함과 동시에 호출하는 것
 (function hello() {
     console.log('IIFE');
 })();
@@ -157,6 +158,51 @@ const simpleMultiply = (a, b) => {
 // Fun quiz time❤️
 // function calculate(command, a, b)
 // command: add, substract, divide, multiply, remainder
+
+function calculate(command, a, b) {
+    switch (command) {
+        case 'add':
+            return a + b;
+        case 'substract':
+            return a - b;
+        case 'divide':
+            return a / b;
+        case 'multiply':
+            return a * b;
+        case 'remainder':
+            return a % b;
+        default:
+            throw Error('unknown command');
+    }
+}
+console.log(calculate('divide',4,2));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function calculate(command, a, b) {
     switch (command) {
